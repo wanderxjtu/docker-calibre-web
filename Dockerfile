@@ -22,6 +22,7 @@ RUN \
     python3-flask-limiter \
     python3-flask-babel \
     python3-flask-httpauth \
+    python3-flask-dance \
     python3-netifaces \
     python3-pycountry \
     python3-pythonmagick \
@@ -37,7 +38,6 @@ RUN \
     python3-unidecode \
     python3-urllib3 \
     python3-bleach \
-    ghostscript \
     libldap2 \
     libmagic1t64 \
     libsasl2-2 \
