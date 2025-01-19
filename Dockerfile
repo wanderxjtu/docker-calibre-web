@@ -1,4 +1,4 @@
-FROM python:3.12-bookworm
+FROM docker.io/ubuntu:24.04
 
 # set version label
 ARG BUILD_DATE
@@ -10,21 +10,42 @@ RUN \
   apt-get update && \
   echo "**** install runtime packages ****" && \
   apt-get install -y --no-install-recommends \
-    imagemagick \
+    python3.12 \
+    python3-pip \
+    python3-wand \
+    python3-chardet \
+    python3-tornado \
+    python3-apscheduler \
+    python3-babel \
+    python3-flask \
+    python3-flask-principal \
+    python3-flask-limiter \
+    python3-flask-babel \
+    python3-flask-httpauth \
+    python3-netifaces \
+    python3-pycountry \
+    python3-pythonmagick \
+    python3-jinja2 \
+    python3-regex \
+    python3-markupsafe \
+    python3-pytzdata \
+    python3-requests \
+    python3-pypdf \
+    python3-sqlalchemy \
+    python3-cryptography \
+    python3-lxml \
+    python3-unidecode \
+    python3-urllib3 \
+    python3-bleach \
     ghostscript \
-    libldap-2.5-0 \
-    libmagic1 \
+    libldap2 \
+    libmagic1t64 \
     libsasl2-2 \
     libxi6 \
     libxslt1.1 \
-    sqlite3 \
-    xdg-utils \
-    curl && \
+    sqlite3 && \
   echo "**** install calibre-web ****" && \
-  pip install -U --no-cache-dir \
-    pip \
-    wheel && \
-  pip install calibreweb && \
+  pip install calibreweb --break-system-packages --no-cache-dir && \
   echo "**** cleanup ****" && \
   apt-get -y autoremove && \
   rm -rf \
