@@ -51,9 +51,13 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/* \
     /root/.cache
+WORKDIR /app
 RUN \
   echo "**** install calibre-web ****" && \
-  pip install calibreweb --break-system-packages --no-cache-dir && \
+  pip install --break-system-packages --no-cache-dir \
+    calibreweb \
+    calibreweb[oauth] \
+    && \
   echo "**** cleanup ****" && \
   rm -rf \
     /tmp/* \
