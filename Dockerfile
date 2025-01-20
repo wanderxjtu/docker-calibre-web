@@ -44,10 +44,17 @@ RUN \
     libxi6 \
     libxslt1.1 \
     sqlite3 && \
+  echo "**** cleanup ****" && \
+  apt-get -y autoremove && \
+  rm -rf \
+    /tmp/* \
+    /var/lib/apt/lists/* \
+    /var/tmp/* \
+    /root/.cache
+RUN \
   echo "**** install calibre-web ****" && \
   pip install calibreweb --break-system-packages --no-cache-dir && \
   echo "**** cleanup ****" && \
-  apt-get -y autoremove && \
   rm -rf \
     /tmp/* \
     /var/lib/apt/lists/* \
