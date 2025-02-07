@@ -64,6 +64,9 @@ RUN \
     /var/lib/apt/lists/* \
     /var/tmp/* \
     /root/.cache
+RUN \
+  echo "**** fix mobi mimetypes for <=0.6.24 ****" && \
+  sed -i "/.mobi/s|application/octet-stream|application/x-mobipocket-ebook|" /usr/local/lib/python3.12/dist-packages/calibreweb/cps/__init__.py
 
 # add local files
 #COPY root/ /
